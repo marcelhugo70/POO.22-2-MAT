@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Desenhista
+comment0.text=\r\n\ Escreva\ uma\ descri\u00E7\u00E3o\ da\ classe\ Desenhista\ aqui.\r\n\ \r\n\ @author\ (seu\ nome)\ \r\n\ @version\ (um\ n\u00FAmero\ da\ vers\u00E3o\ ou\ uma\ data)\r\n
+comment1.params=
+comment1.target=void\ desenharRosto()
+comment1.text=\r\n\ Um\ exemplo\ de\ um\ m\u00E9todo\ -\ substitua\ este\ coment\u00E1rio\ pelo\ seu\ pr\u00F3prio\r\n\ \r\n\ @param\ \ y\ \ \ um\ exemplo\ de\ um\ par\u00E2metro\ de\ m\u00E9todo\r\n\ @return\ \ \ \ \ a\ soma\ de\ x\ e\ y\ \r\n
+numComments=2
