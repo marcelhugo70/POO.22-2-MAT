@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.target=Pessoa
+comment0.text=\r\n\ Escreva\ uma\ descri\u00E7\u00E3o\ da\ classe\ Pessoa\ aqui.\r\n\ \r\n\ @author\ (seu\ nome)\ \r\n\ @version\ (um\ n\u00FAmero\ da\ vers\u00E3o\ ou\ uma\ data)\r\n
+comment1.params=nome\ sexo\ data
+comment1.target=Pessoa(java.lang.String,\ char,\ java.lang.String)
+comment1.text=\r\n\ Construtor\ para\ objetos\ da\ classe\ Pessoa\r\n
+comment2.params=nome
+comment2.target=void\ setNome(java.lang.String)
+comment3.params=sexo
+comment3.target=void\ setSexo(char)
+comment4.params=data
+comment4.target=void\ setDataNascimento(java.lang.String)
+comment5.params=estadoCivil
+comment5.target=void\ setEstadoCivil(java.lang.String)
+comment6.params=
+comment6.target=java.lang.String\ getNome()
+comment7.params=
+comment7.target=char\ getSexo()
+comment8.params=
+comment8.target=java.lang.String\ getDataNascimento()
+comment9.params=
+comment9.target=java.lang.String\ getEstadoCivil()
+numComments=10
