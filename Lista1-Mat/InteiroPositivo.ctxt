@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=InteiroPositivo
+comment0.text=\r\n\ Escreva\ uma\ descri\u00E7\u00E3o\ da\ classe\ InteiroPositivo\ aqui.\r\n\ \r\n\ @author\ (seu\ nome)\ \r\n\ @version\ (um\ n\u00FAmero\ da\ vers\u00E3o\ ou\ uma\ data)\r\n
+comment1.params=valor
+comment1.target=void\ setValor(int)
+comment2.params=
+comment2.target=int\ getValor()
+comment3.params=outro
+comment3.target=long\ multiplicar(InteiroPositivo)
+comment4.params=
+comment4.target=long\ fatorial()
+numComments=5
