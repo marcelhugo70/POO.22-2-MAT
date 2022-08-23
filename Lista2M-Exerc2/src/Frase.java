@@ -8,8 +8,7 @@ public class Frase {
 	}
 	
 	public String[] decompor() {
-		// to do
-		return null;
+		return this.texto.split(" ");
 	}
 	
 

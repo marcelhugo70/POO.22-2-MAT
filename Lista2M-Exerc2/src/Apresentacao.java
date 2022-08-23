@@ -7,12 +7,14 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
 
 public class Apresentacao {
 
 	private JFrame frame;
 	private JTextField tfFrase;
 	private JTextArea textArea;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -69,8 +71,11 @@ public class Apresentacao {
 		btnNewButton.setBounds(334, 26, 89, 23);
 		frame.getContentPane().add(btnNewButton);
 		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 78, 314, 172);
+		frame.getContentPane().add(scrollPane);
+		
 		textArea = new JTextArea();
-		textArea.setBounds(10, 78, 314, 172);
-		frame.getContentPane().add(textArea);
+		scrollPane.setViewportView(textArea);
 	}
 }
