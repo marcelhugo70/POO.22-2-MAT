@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=InteiroPositivoTest
+comment0.text=\r\n\ A\ classe\ de\ teste\ InteiroPositivoTest.\r\n\r\n\ @author\ \ (seu\ nome)\r\n\ @version\ (um\ n\u00FAmero\ da\ vers\u00E3o\ ou\ uma\ data)\r\n
+comment1.params=
+comment1.target=void\ testCaso01_fatorial_10()
+comment2.params=
+comment2.target=void\ testCaso02_fatorial_20()
+comment3.params=
+comment3.target=void\ testCaso03_Divisores_14()
+comment4.params=
+comment4.target=void\ testCaso04_Divisores_18()
+comment5.params=
+comment5.target=void\ testCaso05_Fibonacci_valor9()
+comment6.params=
+comment6.target=void\ testCaso06_Fibonacci_valor15()
+numComments=7

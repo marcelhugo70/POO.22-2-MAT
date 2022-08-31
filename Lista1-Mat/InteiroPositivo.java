@@ -39,7 +39,7 @@ public class InteiroPositivo
 
     // item d
     public String identificarDivisores(){
-        String resultado = "Os divisores são ";
+        String resultado = "Os divisores inteiros são ";
         int contador = 0;
         for (int den = 1; den <= this.x; den++){
             if (this.x % den == 0){
@@ -47,6 +47,7 @@ public class InteiroPositivo
                 contador++;
             }
         }
+        resultado = resultado.substring(0,resultado.length()-2);
         resultado = resultado + " e a quantidade de divisores é "+contador;
         return resultado;
     }
