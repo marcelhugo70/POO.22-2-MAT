@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.awt.event.ActionEvent;
 
 public class Apresentacao {
@@ -15,9 +17,13 @@ public class Apresentacao {
 	private JTextField tfCPF;
 	private JTextField tfUF;
 	private JTextField tfRenda;
-	private Contribuinte[] contribuintes = new Contribuinte[100];
-	private int indice;
 	private JTextField tfConsulta;
+	private JTextField tfCPFConsulta;
+	// para exemplificar o uso dos containers, vamos usar ambos. 
+	// Mas o comum é definir qual o mais apropriado e utilizar apenas um.
+	private ArrayList<Contribuinte> contribuintes = new ArrayList<>();
+	private HashMap<String, Contribuinte> contribHash = new HashMap<>();
+
 
 	/**
 	 * Launch the application.
@@ -99,8 +105,11 @@ public class Apresentacao {
 				double imposto = contrib.calcularImposto();
 				String str = "O contribuinte " + contrib.getNome() + " pagará R$" + imposto;
 				JOptionPane.showMessageDialog(frame, str);
-				contribuintes[indice] = contrib;
-				indice++;
+
+				// adicionando no ArrayList
+				contribuintes.add(contrib);
+				// colocando no HashMap
+				contribHash.put(contrib.getCpf(), contrib);
 			}
 		});
 		btnNewButton.setBounds(143, 114, 89, 23);
@@ -115,23 +124,62 @@ public class Apresentacao {
 		frame.getContentPane().add(tfConsulta);
 		tfConsulta.setColumns(10);
 		
-		JButton btnNewButton_1 = new JButton("Consultar");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnConsultaImposto = new JButton("Consultar");
+		btnConsultaImposto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				double valorConsulta = Double.parseDouble(tfConsulta.getText());
 				String str = "Contribuintes com imposto acima de R$"+valorConsulta+"\n";
-				for (int i=0; i < indice; i++) {
-					if (contribuintes[i].calcularImposto() > valorConsulta) {
-						str += "\n"+contribuintes[i].getNome()+" - "
-								+contribuintes[i].getCpf()+" - "
-								+contribuintes[i].getRendaAnual()+" - Imposto="
-								+contribuintes[i].calcularImposto();
+				for (int i=0; i < contribuintes.size(); i++) {
+					Contribuinte c = contribuintes.get(i); // busca o objeto da posição indicada
+					if (c.calcularImposto() > valorConsulta) {
+						str += "\n"+c.getNome()+" - "
+								+c.getCpf()+" - "
+								+c.getRendaAnual()+" - Imposto="
+								+c.calcularImposto();
 					}
 				}
 				JOptionPane.showMessageDialog(frame, str);
 			}
 		});
-		btnNewButton_1.setBounds(264, 182, 89, 23);
-		frame.getContentPane().add(btnNewButton_1);
+		btnConsultaImposto.setBounds(264, 182, 89, 23);
+		frame.getContentPane().add(btnConsultaImposto);
+		
+		JLabel lblNewLabel_5 = new JLabel("CPF a consultar:");
+		lblNewLabel_5.setBounds(10, 219, 108, 14);
+		frame.getContentPane().add(lblNewLabel_5);
+		
+		tfCPFConsulta = new JTextField();
+		tfCPFConsulta.setBounds(143, 216, 86, 20);
+		frame.getContentPane().add(tfCPFConsulta);
+		tfCPFConsulta.setColumns(10);
+		
+		JButton btnConsultaCPF = new JButton("Consultar");
+		btnConsultaCPF.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String str = "CPF ";
+				// usando o ArrayList
+				for (Contribuinte c:contribuintes) {
+					if (c.getCpf().equals(tfCPFConsulta.getText())) {
+						str += "\nArrayList: "+c.getNome()+" - "
+								+c.getCpf()+" - "
+								+c.getRendaAnual()+" - Imposto="
+								+c.calcularImposto();
+					}
+				}
+				JOptionPane.showMessageDialog(frame, str);
+				
+				//usando o HashMap
+				Contribuinte c = contribHash.get(tfCPFConsulta.getText());
+				if (c != null) {
+					str += "\nHashMap: "+c.getNome()+" - "
+							+c.getCpf()+" - "
+							+c.getRendaAnual()+" - Imposto="
+							+c.calcularImposto();
+				}
+				JOptionPane.showMessageDialog(frame, str);
+			}
+		});
+		btnConsultaCPF.setBounds(264, 215, 89, 23);
+		frame.getContentPane().add(btnConsultaCPF);
 	}
 }

@@ -1,4 +1,3 @@
-
 public class Contribuinte {
 	private String nome;
 	private String cpf;
