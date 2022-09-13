@@ -1,4 +1,4 @@
-public class Contribuinte {
+public class Contribuinte { 
 	private String nome;
 	private String cpf;
 	private String uf;

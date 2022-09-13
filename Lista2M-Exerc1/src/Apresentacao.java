@@ -181,5 +181,62 @@ public class Apresentacao {
 		});
 		btnConsultaCPF.setBounds(264, 215, 89, 23);
 		frame.getContentPane().add(btnConsultaCPF);
+		
+		JButton btnParticipacao = new JButton("Participa\u00E7\u00E3o %");
+		btnParticipacao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double impostoSC, impostoPR, impostoRS, impostoTotal;
+				impostoSC=impostoPR=impostoRS=impostoTotal=0;
+				
+				for (Contribuinte c: contribuintes) {
+					if (c.getUf().equals("SC")) {
+						impostoSC += c.calcularImposto();
+					}
+					else if(c.getUf().equals("PR")) {
+						impostoPR += c.calcularImposto();
+					} 
+					else if(c.getUf().equals("RS")) {
+						impostoRS += c.calcularImposto();
+					} 
+					impostoTotal += c.calcularImposto();
+				}
+				
+				String str = "Participação % dos estados\n";
+				str += "\n SC:"+impostoSC+" = "+(impostoSC/impostoTotal*100)+"%";
+				str += "\n PR:"+impostoPR+" = "+(impostoPR/impostoTotal*100)+"%";
+				str += "\n RS:"+impostoRS+" = "+(impostoRS/impostoTotal*100)+"%";
+				str += "\nTotal = "+impostoTotal;
+				JOptionPane.showMessageDialog(frame, str);
+			}
+		});
+		btnParticipacao.setBounds(264, 148, 117, 23);
+		frame.getContentPane().add(btnParticipacao);
+		
+		JButton btnPartHash = new JButton("Part Hash");
+		btnPartHash.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HashMap<String,Double> hashImposto = new HashMap<>();
+				double impostoTotal = 0;
+				for (Contribuinte c: contribuintes) {
+					double valor = 0;
+					if (hashImposto.containsKey(c.getUf())){
+						valor = hashImposto.get(c.getUf());
+					}
+					valor += c.calcularImposto();
+					impostoTotal += c.calcularImposto();
+					hashImposto.put(c.getUf(), valor);
+				}
+				
+				String str = "Participação % dos estados\n";
+				for (String uf: hashImposto.keySet()) {
+					double valor = hashImposto.get(uf);
+					str += "\n"+uf+": "+valor+" = "+(valor/impostoTotal*100)+"%";
+				}
+				str += "\nTotal = "+impostoTotal;
+				JOptionPane.showMessageDialog(frame, str);
+			}
+		});
+		btnPartHash.setBounds(264, 127, 89, 23);
+		frame.getContentPane().add(btnPartHash);
 	}
 }
