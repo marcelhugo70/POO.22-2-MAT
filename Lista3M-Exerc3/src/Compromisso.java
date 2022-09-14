@@ -1,6 +1,6 @@
 import java.time.LocalTime;
 
-public class Compromisso {
+public class Compromisso { 
 	private LocalTime hora;
 	private String descricao;
 	private int tempo;
