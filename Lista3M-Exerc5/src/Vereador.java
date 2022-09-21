@@ -76,7 +76,7 @@ public class Vereador { // contribuição do Nicolas
     	if (qtdProjApres == 0) {
     		return 0;
     	}
-        return (qtdProjAprov/qtdProjApres)*getIndiceTrabalho();
+        return ((double)qtdProjAprov/qtdProjApres)*getIndiceTrabalho();
     }
     
 }
