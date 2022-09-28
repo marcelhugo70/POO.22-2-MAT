@@ -27,6 +27,9 @@ public class Obra {
 			pareceres[indice] = p;
 			indice++;
 		}
+		else {
+			throw new IllegalArgumentException("Chegou no limite de 3 pareceres");
+		}
 	}
 	
 	public int getQtdePareceres() {

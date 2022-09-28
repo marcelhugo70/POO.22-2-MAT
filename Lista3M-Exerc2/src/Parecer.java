@@ -13,6 +13,10 @@ public class Parecer {
 		if (parecerista != null && !parecerista.isBlank()) {
 			this.parecerista = parecerista;
 		}
+		else {
+			IllegalArgumentException exc = new IllegalArgumentException("Nome do parecerista está inválido");
+			throw exc;
+		}
 	}
 
 	public LocalDate getData() {
@@ -28,6 +32,9 @@ public class Parecer {
 	}
 
 	public void setConteudo(String conteudo) {
+		if (conteudo == null || conteudo.isBlank()) {
+			throw new IllegalArgumentException("Conteúdo não pode ser vazio/branco.");
+		}
 		this.conteudo = conteudo;
 	}
 

@@ -72,20 +72,20 @@ public class Apresentacao {
 		btnAdicionarObra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-					// criar o objeto
-					obraAtual = new Obra();
-					// atribuir valores aos atributos
-					obraAtual.setAutor(tfAutor.getText());
-					obraAtual.setTitulo(tfTitulo.getText());
-					// guardar o objeto para processamentos posteriores
-					acervo.put(obraAtual.getTitulo(), obraAtual);
+				// criar o objeto
+				obraAtual = new Obra();
+				// atribuir valores aos atributos
+				obraAtual.setAutor(tfAutor.getText());
+				obraAtual.setTitulo(tfTitulo.getText());
+				// guardar o objeto para processamentos posteriores
+				acervo.put(obraAtual.getTitulo(), obraAtual);
 
-					JOptionPane.showMessageDialog(frame, "Obra adicionada");
+				JOptionPane.showMessageDialog(frame, "Obra adicionada");
 
-					tfParecerista.setEnabled(true);
-					tfData.setEnabled(true);
-					taConteudo.setEnabled(true);
-					btnAdicionarParecer.setEnabled(true);
+				tfParecerista.setEnabled(true);
+				tfData.setEnabled(true);
+				taConteudo.setEnabled(true);
+				btnAdicionarParecer.setEnabled(true);
 
 			}
 		});
@@ -129,14 +129,19 @@ public class Apresentacao {
 		btnAdicionarParecer.setEnabled(false);
 		btnAdicionarParecer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				Parecer p = new Parecer();
-				p.setParecerista(tfParecerista.getText());
-				p.setData(LocalDate.parse(tfData.getText(), df));
-				p.setConteudo(taConteudo.getText());
-				obraAtual.addParecer(p);
-				JOptionPane.showMessageDialog(frame, "Parecer adicionado");
-
+				try {
+					Parecer p = new Parecer();
+					p.setParecerista(tfParecerista.getText());
+					p.setData(LocalDate.parse(tfData.getText(), df));
+					p.setConteudo(taConteudo.getText());
+					obraAtual.addParecer(p);
+					JOptionPane.showMessageDialog(frame, "Parecer adicionado");
+				} catch (DateTimeParseException excecao) {
+					JOptionPane.showMessageDialog(frame, "Data inválida. Redigite.");
+					tfData.requestFocus(); // coloca o cursor no campo tfData
+				} catch (IllegalArgumentException iae) {
+					JOptionPane.showMessageDialog(frame, iae.getMessage());
+				}
 			}
 		});
 		btnAdicionarParecer.setBounds(335, 155, 89, 23);
