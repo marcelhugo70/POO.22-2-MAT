@@ -146,7 +146,7 @@ public class Apresentacao {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String str = "Lista dos alunos\\n";
-				
+				alunos.sort(null);
 				for (Aluno a : alunos) {
 					str += "\n" + a.mostra(); // polimorfismo
 				}
