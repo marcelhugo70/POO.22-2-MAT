@@ -1,7 +1,8 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 
-public abstract class Aluno implements Comparable<Aluno> {
+public abstract class Aluno implements Comparable<Aluno>, Serializable {
     private String nome;
     private LocalDate dataNascimento;
     
@@ -17,7 +18,7 @@ public abstract class Aluno implements Comparable<Aluno> {
         if (nome != null && !nome.isBlank() && nome.length() >= 5) {
             this.nome = nome;
         } else {
-            throw new IllegalArgumentException("Nome Inválido, tente novamente...");
+            throw new IllegalArgumentException("Nome Invï¿½lido, tente novamente...");
         }
     }
     public LocalDate getDataNascimento() {
@@ -27,7 +28,7 @@ public abstract class Aluno implements Comparable<Aluno> {
         if (dataNascimento != null) {
             this.dataNascimento = dataNascimento;
         } else {
-            throw new IllegalArgumentException("Data Inválida, tente novamente...");
+            throw new IllegalArgumentException("Data Invï¿½lida, tente novamente...");
         }
     }
     public abstract String mostra();

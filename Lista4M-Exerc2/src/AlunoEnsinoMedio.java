@@ -14,15 +14,15 @@ public class AlunoEnsinoMedio extends Aluno  {
             this.ano = ano;
         }
         else {
-            throw new IllegalArgumentException("Ano inválido, tente novamente...");
+            throw new IllegalArgumentException("Ano invï¿½lido, tente novamente...");
         }
     }
     public String mostra() {
-        return this.getNome() + " está cursando o " + this.getAno() + " ano do ensino médio e tem "
+        return this.getNome() + " estï¿½ cursando o " + this.getAno() + " ano do ensino mï¿½dio e tem "
                 + this.getIdade()+" anos.";
     }
     protected void finalize() throws Throwable {
-        System.out.println("FIM do Aluno Ensino Médio "+this.getNome());
+        System.out.println("FIM do Aluno Ensino Mï¿½dio "+this.getNome());
         super.finalize();
     }
 }

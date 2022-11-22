@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Curso {
+public class Curso implements Serializable{
     private String sigla;
     private String nomeCurso;
     
@@ -24,7 +25,7 @@ public class Curso {
         if (nomeCurso != null && !nomeCurso.isBlank() && nomeCurso.length() >= 5) {         
             this.nomeCurso = nomeCurso;
         } else {
-            throw new IllegalArgumentException("Nome inválido do Curso.");
+            throw new IllegalArgumentException("Nome invï¿½lido do Curso.");
         }
     }
     

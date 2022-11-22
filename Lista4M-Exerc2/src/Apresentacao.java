@@ -2,6 +2,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JComboBox;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,6 +21,12 @@ import java.util.HashMap;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class Apresentacao {
 
@@ -57,6 +64,27 @@ public class Apresentacao {
 	 */
 	public Apresentacao() {
 		initialize();
+		carregarDados();
+	}
+
+	private void carregarDados() {
+		try {
+			FileInputStream fis = new FileInputStream("DadosExerc2.obj");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			alunos = (ArrayList<Aluno>) ois.readObject();
+			cbCursos.setModel((ComboBoxModel<Curso>) ois.readObject());
+			ois.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
@@ -67,11 +95,11 @@ public class Apresentacao {
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				// para liberar mais cedo os containers e assim conseguir enxergar a destrui√ß√£o dos objetos
+				// para liberar mais cedo os containers e assim conseguir enxergar a destruiÁ„o dos objetos
 				cbCursos = null; 
 				alunos =  null;
 				System.gc();
-				JOptionPane.showMessageDialog(null, "Parando para olhar a execu√ß√£o dos destrutores");
+				JOptionPane.showMessageDialog(null, "Parando para olhar a execuÁ„o dos destrutores");
 			}
 		});
 		frame.setBounds(100, 100, 620, 300);
@@ -79,8 +107,8 @@ public class Apresentacao {
 		frame.getContentPane().setLayout(null);
 
 		cbTipoAluno = new JComboBox();
-		cbTipoAluno.setModel(new DefaultComboBoxModel(new String[] { "Ensino M√©dio", "Universit√°rio" }));
-		cbTipoAluno.setToolTipText("Ensino M√©dio\r\nUniversit√°rio");
+		cbTipoAluno.setModel(new DefaultComboBoxModel(new String[] { "Ensino MÈdio", "Universit·rio" }));
+		cbTipoAluno.setToolTipText("Ensino MÈdio\r\nUniversit·rio");
 		cbTipoAluno.setBounds(283, 28, 96, 22);
 		frame.getContentPane().add(cbTipoAluno);
 
@@ -161,12 +189,12 @@ public class Apresentacao {
 		lblNewLabel_1.setBounds(164, 10, 45, 13);
 		frame.getContentPane().add(lblNewLabel_1);
 
-		JLabel lblNewLabel_1_1 = new JLabel("Aluno ensino m√©dio");
+		JLabel lblNewLabel_1_1 = new JLabel("Aluno ensino mÈdio");
 		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblNewLabel_1_1.setBounds(23, 128, 113, 13);
 		frame.getContentPane().add(lblNewLabel_1_1);
 
-		JLabel lblNewLabel_1_1_1 = new JLabel("Aluno universit√°rio");
+		JLabel lblNewLabel_1_1_1 = new JLabel("Aluno universit·rio");
 		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblNewLabel_1_1_1.setBounds(245, 125, 113, 13);
 		frame.getContentPane().add(lblNewLabel_1_1_1);
@@ -216,5 +244,27 @@ public class Apresentacao {
 		cbCursos = new JComboBox();
 		cbCursos.setBounds(289, 172, 137, 22);
 		frame.getContentPane().add(cbCursos);
+		
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					FileOutputStream fos = new FileOutputStream("DadosExerc2.obj");
+					ObjectOutputStream oos = new ObjectOutputStream(fos);
+					oos.writeObject(alunos);
+					oos.writeObject(cbCursos.getModel());
+					oos.close();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		btnSalvar.setBounds(494, 195, 89, 23);
+		frame.getContentPane().add(btnSalvar);
 	}
 }

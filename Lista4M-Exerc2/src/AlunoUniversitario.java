@@ -20,7 +20,7 @@ public class AlunoUniversitario extends Aluno {
 		if (curso != null) {
 			this.curso = curso;
 		} else {
-			throw new IllegalArgumentException("Curso não pode ser nulo, tente novamente...");
+			throw new IllegalArgumentException("Curso nï¿½o pode ser nulo, tente novamente...");
 		}
 	}
 
@@ -33,19 +33,19 @@ public class AlunoUniversitario extends Aluno {
 				|| formaIngresso == 'I') {
 			this.formaIngresso = formaIngresso;
 		} else {
-			throw new IllegalArgumentException("Forma de Ingresso não disponível.");
+			throw new IllegalArgumentException("Forma de Ingresso nï¿½o disponï¿½vel.");
 		}
 	}
 
 	public String mostra() {
-		return this.getNome() + " é aluno  universitário do curso de " 
+		return this.getNome() + " ï¿½ aluno  universitï¿½rio do curso de " 
 					+ curso.getSigla() + " - " + curso.getNomeCurso()
 					+ ", ingressando por " + this.getFormaIngresso();
 		
 	}
 
 	protected void finalize() throws Throwable {
-		System.out.println("FIM do Aluno Universitário:"+this.getNome());
+		System.out.println("FIM do Aluno Universitï¿½rio:"+this.getNome());
 		super.finalize();
 	}
 }
